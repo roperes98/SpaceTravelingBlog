@@ -64,7 +64,13 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
     const newPosts = postsResults.results.map(post => {
       return {
         uid: post.uid,
-        first_publication_date: post.first_publication_date,
+        first_publication_date: format(
+          new Date(post.first_publication_date),
+          'dd MMM yyyy',
+          {
+            locale: ptBR,
+          }
+        ),
         data: {
           title: post.data.title,
           subtitle: post.data.subtitle,
